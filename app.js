@@ -24,7 +24,14 @@ window.onload = function() {
         e.preventDefault();
         
         const message = messageField.value;
+
+        socket.send(message)
+
+        messagesList.innerHTML += '<li class="sent"><span>Sent:</span>' + message +
+        '</li>';
         
-        
-    }
+        messageField.value = '';
+
+        return false;
+    };
 }
