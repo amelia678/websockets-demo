@@ -41,4 +41,20 @@ window.onload = function() {
         const message = event.data;
         messagesList.innerHTML += '<li class="received"><span>Received:</span>' + message + '</li>';
     }
+
+    // Closing sockets 
+    socket.onclose = function(event) {
+        socketStatus.innerHTML = 'Losing connection ... goodbye';
+        socketStatus.className = 'closed';
+    }
+
+    // Close when hit close button
+
+    closeBtn.onclick = function(e) {
+        e.preventDefault();
+
+        socket.close();
+
+        return false;
+    }
 }
