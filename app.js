@@ -19,7 +19,7 @@ window.onload = function() {
         console.log('WebSocket Error: ' + error);
     };
     
-    
+    // Send a message
     form.onsubmit = function(e) {
         e.preventDefault();
         
@@ -34,4 +34,11 @@ window.onload = function() {
 
         return false;
     };
+
+    // Handle messages sent by the server
+
+    socket.onmessage = function(event) {
+        const message = event.data;
+        messagesList.innerHTML += '<li class="received"><span>Received:</span>' + message + '</li>';
+    }
 }
